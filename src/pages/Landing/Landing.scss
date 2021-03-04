@@ -1,0 +1,54 @@
+.layer {
+    width: 100vw;
+    height: 100vh;
+}
+
+#loading-text {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+#loading-text path:nth-child(1) {
+    stroke-dasharray: 611;
+    stroke-dashoffset: 611;
+    animation: line-anim 2s ease forwards 0.3s;
+}
+
+#loading-text path:nth-child(2) {
+    stroke-dasharray: 226;
+    stroke-dashoffset: 226;
+    animation: line-anim 3s ease forwards 0.6s;
+}
+
+#loading-text path:nth-child(3) {
+    stroke-dasharray: 361;
+    stroke-dashoffset: 361;
+    animation: line-anim 3s ease forwards 0.9s;
+}
+
+#loading-text path:nth-child(4) {
+    stroke-dasharray: 517;
+    stroke-dashoffset: 517;
+    animation: line-anim 3s ease forwards 1.2s;
+}
+
+#loading-text path:nth-child(5) {
+    stroke-dasharray: 515;
+    stroke-dashoffset: 515;
+    animation: line-anim 2s ease forwards 1.5s;
+}
+
+@keyframes line-anim {
+    to {
+        stroke-dashoffset: 0;
+    }
+}
+
+@media screen and (max-width: 600px) {
+    svg {
+        width: 300px;
+        height: 80px;
+    }
+}

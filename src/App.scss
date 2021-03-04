@@ -1,0 +1,29 @@
+@import url("https://fonts.googleapis.com/css2?family=Lato:wght@300;400&family=Libre+Franklin:wght@200;300&display=swap");
+
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+    color: rgba(255, 255, 255, 0.7);
+    border: none;
+    outline: none;
+    list-style: none;
+}
+
+body {
+    width: 100%;
+    height: 100%;
+    font-family: "Libre Franklin", sans-serif;
+    background: rgb(34, 36, 38);
+    overflow-x: hidden;
+    display: flex;
+    overscroll-behavior: none;
+
+    canvas {
+        display: block;
+    }
+
+    .container {
+        margin-bottom: 50px;
+    }
+}

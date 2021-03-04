@@ -1,0 +1,36 @@
+footer {
+    padding: 50px 13% 20px 13%;
+    margin-top: auto;
+
+    .copyright {
+        letter-spacing: 2px;
+    }
+
+    .social-media {
+        display: flex;
+        justify-content: flex-end;
+
+        a {
+            cursor: pointer;
+
+            i {
+                width: 20px;
+                height: 20px;
+                margin-left: 40px;
+                margin-bottom: 10px;
+            }
+        }
+    }
+}
+
+@media screen and (max-width: 600px) {
+    .copyright,
+    .social-media {
+        display: flex;
+        justify-content: center !important;
+    }
+
+    .social-media {
+        margin-right: 30px !important;
+    }
+}

@@ -1,0 +1,32 @@
+.project-container {
+    padding: 50px 0;
+
+    .canvas {
+        height: 65%;
+        position: relative;
+        padding-top: 10px;
+
+        h1 {
+            font-family: "Libre Franklin", sans-serif;
+            font-weight: 200;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            z-index: 10;
+            transform: translate(-50%, -100%);
+            font-size: 4rem;
+            white-space: nowrap;
+            mix-blend-mode: difference;
+        }
+    }
+}
+
+@media screen and (max-width: 600px) {
+    h1 {
+        font-size: 1.3rem !important;
+    }
+    canvas {
+        height: 300px;
+        width: 300px;
+    }
+}

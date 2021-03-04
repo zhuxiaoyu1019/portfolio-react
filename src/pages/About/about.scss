@@ -1,0 +1,52 @@
+.container {
+    display: block;
+    padding: 15% 13% 8%;
+
+    .current-role {
+        font-family: "Lato", sans-serif;
+        line-height: 1.3em;
+        margin-bottom: 0.7em;
+        font-size: 2rem;
+        font-weight: 100;
+    }
+
+    .brand-stat {
+        font-family: "Lato", sans-serif;
+        font-weight: 300;
+        line-height: 1.5em;
+        margin-bottom: 0.7em;
+        font-size: 1.3rem;
+    }
+
+    .img {
+        height: 330px;
+        width: 400px;
+        margin-top: 15px;
+        display: block;
+    }
+}
+
+@media screen and (max-width: 1280px) {
+    .container {
+        text-align: center;
+
+        .img {
+            display: block;
+            max-width: 100%;
+            max-height: 100%;
+            margin-right: auto;
+            margin-left: auto;
+        }
+    }
+}
+
+@media screen and (max-width: 600px) {
+    .container {
+        padding-top: 25%;
+    }
+
+    .image {
+        height: 280px !important;
+        width: 350px !important;
+    }
+}
