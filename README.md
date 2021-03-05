@@ -17,7 +17,7 @@ This is a React-based responsive porfolio built with PIXIJS, VANTAJS and GSAP on
 
 ## Deployed Application
 
-[Portfolio]()
+[Portfolio](https://ritaz.herokuapp.com)
 
 ## Demo
 
