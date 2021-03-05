@@ -4,7 +4,7 @@
 
 ## Description
 
-This is a React-based responsive porfolio built with PIXIJS, VANTAJS and GSAP on top of Material UI.
+This is a React-based responsive portfolio built with PIXIJS, VANTAJS, and GSAP on top of Material UI.
 
 ## Table of Contents
 
