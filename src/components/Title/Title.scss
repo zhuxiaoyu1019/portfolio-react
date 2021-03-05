@@ -2,4 +2,11 @@
     font-family: "Libre Franklin", sans-serif !important;
     font-size: 2.5rem !important;
     font-weight: 100 !important;
+    white-space: nowrap;
+}
+
+@media screen and (max-width: 600px) {
+    .title {
+        font-size: 1.8rem !important;
+    }
 }

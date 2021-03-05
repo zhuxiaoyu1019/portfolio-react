@@ -1,20 +1,25 @@
-.buttontest {
-    opacity: 1;
-    color: purple;
-}
-
 .main-header {
     position: fixed;
     display: flex;
     justify-content: space-between;
+    position: fixed;
     align-items: center;
     height: 65px;
     width: 100vw;
     padding: 0 10vw;
     color: rgb(34, 36, 38);
     z-index: 100;
+    top: 0;
     transition: 0.4s ease-out;
-    padding: 80px 100px;
+    padding: 80px 9%;
+
+    #nav-brand {
+        cursor: pointer;
+
+        &:hover {
+            animation: glow 1.5s ease-in-out infinite alternate;
+        }
+    }
 
     .nav-brand {
         font-weight: 400;
@@ -22,6 +27,7 @@
         font-size: 18px;
         line-height: 1.6em;
         letter-spacing: 0.25em;
+        white-space: nowrap;
     }
 
     a {
@@ -118,7 +124,7 @@
         &-line {
             display: block;
             position: relative;
-            background: rgba(255, 255, 255, 0.7);
+            background: #f6f6f6;
             height: 2px;
             width: 20px;
             border-radius: 4px;
@@ -131,7 +137,7 @@
                 height: 100%;
                 width: 100%;
                 border-radius: 4px;
-                background: rgba(255, 255, 255, 0.7);
+                background: #f6f6f6;
                 transition: background 0.8s ease;
             }
 
@@ -153,14 +159,14 @@
     &.scrolled {
         height: 30px;
         background: rgb(34, 36, 38);
-        color: rgba(255, 255, 255, 0.7);
+        color: #f6f6f6;
         padding: 40px 100px;
 
         .menu-icon {
             &-line,
             &-line::before,
             &-line::after {
-                background: rgba(255, 255, 255, 0.7);
+                background: #f6f6f6;
             }
         }
     }
@@ -184,6 +190,7 @@
 @media screen and (max-width: 767px) {
     .main-header {
         padding: 80px 60px;
+        position: relative;
 
         .menu-icon {
             display: block;
@@ -210,14 +217,18 @@
             opacity: 0;
             flex-direction: column;
             justify-content: space-evenly;
+            padding: 27rem 0;
+            width: 100vw;
+            overflow-x: hidden;
             align-items: center;
             width: 100vw;
             height: 0vh;
+            z-index: -10000;
             font-size: 1.2rem;
-            color: rgba(255, 255, 255, 0.7);
+            color: #f6f6f6;
             background: rgb(34, 36, 38);
-            clip-path: path(M 0 200 L 0, 75 A 5, 5 0, 0, 1 150, 75 L 200 200 z at top);
             transition: opacity 0.8s 0.5s, clip-path 1s 0.5s;
+            clip-path: path(M 0 200 L 0, 75 A 5, 5 0, 0, 1 150, 75 L 200 200 z at right);
 
             .nav-link {
                 opacity: 0;
@@ -229,13 +240,16 @@
                     padding: 2rem 0;
                 }
             }
+
+            &.scrolled {
+                padding: 40px 60px;
+            }
         }
 
         .menu-btn:checked ~ .nav-links {
             opacity: 1;
-            height: 100vh;
+            height: 100%;
             overflow-y: hidden;
-            padding: 30rem 0;
 
             .nav-link {
                 opacity: 1;
@@ -254,13 +268,6 @@
                 &:nth-of-type(4) {
                     transition-delay: 1s;
                 }
-
-                // &::before {
-                //     // animation: openTop 0.8s forwards;
-                // }
-                // &::after {
-                //     display: none;
-                // }
             }
         }
 
@@ -276,6 +283,17 @@
                 }
             }
         }
+    }
+}
+
+@keyframes glow {
+    from {
+        text-shadow: 0 0 10px #f6f6f6, 0 0 20px #f6f6f6, 0 0 30px #f6f6f6, 0 0 40px #f6f6f6, 0 0 70px #f6f6f6,
+            0 0 80px #f6f6f6, 0 0 100px #f6f6f6, 0 0 150px #f6f6f6;
+    }
+    to {
+        text-shadow: 0 0 5px #f6f6f6, 0 0 10px #f6f6f6, 0 0 15px #f6f6f6, 0 0 20px #f6f6f6, 0 0 35px #f6f6f6,
+            0 0 40px #f6f6f6, 0 0 50px #f6f6f6, 0 0 75px #f6f6f6;
     }
 }
 

@@ -9,22 +9,22 @@ import "./Contact.scss";
 
 const useStyles = makeStyles((theme) => ({
   cssLabel: {
-    color: "rgba(255, 255, 255, 0.7)",
+    color: "#f6f6f6",
   },
 
   cssOutlinedInput: {
     "&$cssFocused $notchedOutline": {
-      borderColor: "rgba(255, 255, 255, 0.7)",
+      borderColor: "#f6f6f6",
     },
   },
 
   cssFocused: {
-    color: "rgba(255, 255, 255, 0.7)",
+    color: "#f6f6f6",
   },
 
   notchedOutline: {
     borderWidth: "1px",
-    borderColor: "rgba(255, 255, 255, 0.7) !important",
+    borderColor: "#f6f6f6 !important",
   },
 }));
 
@@ -112,9 +112,11 @@ export default function Contact() {
             />
           </Grid>
         </Grid>
-        <Button variant="outlined" className="submit-btn">
-          Send Email
+        <div className="submit-wrapper">
+          <Button variant="outlined" className="submit-btn">
+            Send Email
         </Button>
+        </div>
       </form>
     </div>
   );

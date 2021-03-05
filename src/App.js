@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useRef } from "react";
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import "./App.scss";
 import Landing from "./pages/Landing/Landing";
@@ -7,9 +7,12 @@ import Portfolio from "./pages/Portfolio/Portfolio";
 import Contact from "./pages/Contact/Contact";
 import Nav from "./components/Nav/Nav";
 import Footer from "./components/Footer/Footer";
-import gsap from "gsap/gsap-core";
 
 function App() {
+  // gsap.registerPlugin(ScrollTrigger);
+
+
+
   return (
     <>
       <Router>

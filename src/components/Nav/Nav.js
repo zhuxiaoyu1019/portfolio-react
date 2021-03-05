@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import { makeStyles } from "@material-ui/core/styles";
 import { Link } from "react-scroll";
 import Modal from "@material-ui/core/Modal";
@@ -7,8 +7,8 @@ import { useSpring, animated } from "react-spring/web.cjs";
 import PropTypes from "prop-types";
 import { Document, Page, pdfjs } from "react-pdf";
 import Resume from "../../assets/images/resume.pdf";
+import gsap from "gsap/gsap-core";
 import "./Nav.scss";
-import { TextureMatrix } from "pixi.js";
 
 pdfjs.GlobalWorkerOptions.workerSrc = `//cdnjs.cloudflare.com/ajax/libs/pdf.js/${pdfjs.version}/pdf.worker.js`;
 
@@ -68,12 +68,20 @@ export default function Nav() {
     portfolio: false,
     contact: false,
   });
+  const navBrand = useRef();
 
   useEffect(() => {
     window.addEventListener("scroll", () => {
       setScrollState(window.pageYOffset);
     });
     window.scrollTo(0, 0);
+    gsap.from(navBrand.current, {
+      duration: 0.5,
+      opacity: 0,
+      y: -20,
+      stagger: 0.2,
+      delay: 0.5
+    })
   }, []);
 
   const handleOpen = () => {
@@ -119,12 +127,11 @@ export default function Nav() {
     portfolio: clickState.portfolio ? "active" : "",
     contact: clickState.contact ? "active" : "",
   };
-  console.log("THis is our state!!!", clickState);
 
   return (
-    <header className={scrollState ? "scrolled main-header" : "main-header"}>
+    <header className={scrollState > 15 ? "scrolled main-header" : "main-header"}>
       <div className="nav-brand">
-        <Link to="about">RITA Z</Link>
+        <Link to="about"><p ref={navBrand} id="nav-brand">RITA Z</p></Link>
       </div>
       <input
         type="checkbox"

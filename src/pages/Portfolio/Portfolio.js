@@ -1,20 +1,30 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useRef } from "react";
 import * as PIXI from "pixi.js";
 import fit from "math-fit";
 import gsap from "gsap";
-import "./Portfolio.scss";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
 import GroupUp from "../../assets/images/groupup.png";
 import DataReport from "../../assets/images/gun-violence-data-report.png";
 import Pizzacutter from "../../assets/images/pizzacutter.png";
-import QuizGame from "../../assets/images/quiz-game.png";
-import Reach from "../../assets/images/reach.png";
+import RadCaTS from "../../assets/images/RadCaTS.png";
 import FullTankard from "../../assets/images/the-full-tankard.png";
-import WeatherDashboard from "../../assets/images/weather-dashboard.png";
 import Disp from "../../assets/images/displacement-filter.jpg";
+import "./Portfolio.scss";
 
 export default function Portfolio() {
+  gsap.registerPlugin(ScrollTrigger);
+  const h1 = useRef();
   useEffect(() => {
     new Sketch();
+    gsap.from(h1.current, {
+      scrollTrigger: {
+        trigger: h1.current,
+        scrub: true,
+      },
+      duration: 1,
+      y: -20,
+      opacity: 0
+    })
   }, []);
 
   const loadImages = (paths, whenLoaded) => {
@@ -31,6 +41,13 @@ export default function Portfolio() {
     });
   };
 
+  // const ctx = canvas.getContext("2d");
+  // const DrawOverlay = (img) => {
+  //   ctx.drawImage(img, 0, 0);
+  //   ctx.fillStyle = 'rgba(30, 144, 255, 0.4)';
+  //   ctx.fillRect(0, 0, canvas.width, canvas.height);
+  // }
+
   class Sketch {
     constructor() {
       this.app = new PIXI.Application({
@@ -41,18 +58,18 @@ export default function Portfolio() {
       this.margin = 50;
       this.scroll = 0;
       this.scrollTarget = 0;
+      // window.innerWidth <= 600 ? this.width = window.innerWidth - 2 * this.margin : (window.innerWidth - 2 * this.margin) / 3;
       this.width = (window.innerWidth - 2 * this.margin) / 3;
       this.height = window.innerHeight * 0.7;
       this.container = new PIXI.Container();
       this.app.stage.addChild(this.container);
       this.images = [
         GroupUp,
-        DataReport,
-        Pizzacutter,
-        QuizGame,
-        Reach,
+        RadCaTS,
         FullTankard,
-        WeatherDashboard,
+        Pizzacutter,
+        DataReport,
+
       ];
       this.WHOLEWIDTH = this.images.length * (this.width + this.margin);
 
@@ -99,6 +116,10 @@ export default function Portfolio() {
       this.container.filters = [this.displacementFilter];
     }
 
+    drawOverlay(mask) {
+
+    }
+
     add() {
       const parent = {
         w: this.width,
@@ -114,7 +135,6 @@ export default function Portfolio() {
         const mask = new PIXI.Sprite(PIXI.Texture.WHITE);
         mask.width = this.width;
         mask.height = this.height;
-
         sprite.mask = mask;
 
         sprite.anchor.set(0.5);
@@ -195,8 +215,7 @@ export default function Portfolio() {
   return (
     <div className="project-container" id="portfolio">
       <div className="canvas">
-        <h1>SOME OF MY PAST PROJECT</h1>
-
+        <h1 ref={h1}>SOME OF MY PAST PROJECT</h1>
       </div>
     </div>
   );
