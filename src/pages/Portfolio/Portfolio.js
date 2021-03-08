@@ -41,13 +41,6 @@ export default function Portfolio() {
     });
   };
 
-  // const ctx = canvas.getContext("2d");
-  // const DrawOverlay = (img) => {
-  //   ctx.drawImage(img, 0, 0);
-  //   ctx.fillStyle = 'rgba(30, 144, 255, 0.4)';
-  //   ctx.fillRect(0, 0, canvas.width, canvas.height);
-  // }
-
   class Sketch {
     constructor() {
       this.app = new PIXI.Application({
@@ -58,7 +51,6 @@ export default function Portfolio() {
       this.margin = 50;
       this.scroll = 0;
       this.scrollTarget = 0;
-      // window.innerWidth <= 600 ? this.width = window.innerWidth - 2 * this.margin : (window.innerWidth - 2 * this.margin) / 3;
       this.width = (window.innerWidth - 2 * this.margin) / 3;
       this.height = window.innerHeight * 0.7;
       this.container = new PIXI.Container();
