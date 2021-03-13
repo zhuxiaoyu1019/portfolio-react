@@ -1,0 +1,96 @@
+.card {
+    display: inline-block;
+    position: relative;
+    border: none;
+
+    .media {
+        width: 350px;
+        height: 350px;
+    }
+    .overlay {
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background: rgba(0, 0, 0, 0.8);
+        width: 100%;
+        transition: 0.5s ease;
+        opacity: 0;
+        padding: 20px;
+        text-align: center;
+
+        .name {
+            width: 100%;
+            position: absolute;
+            top: 0;
+            left: 0;
+            opacity: 0;
+            font-size: 1.75rem;
+        }
+        .btns {
+            width: 100%;
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            opacity: 0;
+            overflow-x: hidden;
+            white-space: nowrap;
+            display: flex;
+            justify-content: space-evenly;
+
+            a {
+                border: 1px solid #f6f6f6;
+
+                &:hover {
+                    background-color: #f6f6f6;
+
+                    span {
+                        color: #000000 !important;
+                    }
+                }
+            }
+        }
+    }
+
+    &:hover {
+        .media-wrapper {
+            overflow: hidden !important;
+            width: 350px;
+            height: 350px;
+
+            .media {
+                transform: scale(1.2, 1.2);
+                transition: all 0.5s ease-in-out;
+            }
+        }
+        .overlay {
+            opacity: 1;
+        }
+        .name {
+            top: 30%;
+            opacity: 1;
+            transition: all 0.4s ease-in-out;
+        }
+        .btns {
+            bottom: 30%;
+            opacity: 1;
+            transition: all 0.4s ease-in-out;
+        }
+    }
+}
+
+@media screen and (max-width: 600px) {
+    .card {
+        .media {
+            width: 280px !important;
+            height: 280px !important;
+        }
+        &:hover {
+            .media-wrapper {
+                width: 280px;
+                height: 280px;
+            }
+        }
+    }
+}

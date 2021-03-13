@@ -5,13 +5,16 @@ footer {
     .copyright {
         letter-spacing: 2px;
     }
-
     .social-media {
         display: flex;
         justify-content: flex-end;
 
         a {
             cursor: pointer;
+            &:hover {
+                transform: translateY(-4px);
+                transition: 0.3s;
+            }
 
             i {
                 width: 20px;

@@ -1,44 +1,106 @@
-.project-container {
-    padding: 50px 0;
+#portfolio {
+    text-align: center;
 
-    .canvas {
-        height: 65%;
-        position: relative;
-        padding-top: 10px;
+    .title {
+        margin: 50px;
+        font-family: "Jura", sans-serif !important;
+        font-size: 3rem !important;
+    }
+    .filter-container {
+        padding: 20px;
 
-        h1 {
-            font-family: "Libre Franklin", sans-serif;
-            font-weight: 200;
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            z-index: 10;
-            transform: translate(-50%, -100%);
-            font-size: 4rem;
-            white-space: nowrap;
-            mix-blend-mode: difference;
+        .filter-item {
+            display: inline-block;
+        }
+    }
+    .MuiTab-root {
+        width: 3%;
+        margin: auto;
+    }
+}
+
+.MuiTabs-indicator {
+    background-color: #0101ff !important;
+}
+
+@media screen and (max-width: 900px) {
+    .MuiTab-root {
+        width: 110px !important;
+    }
+}
+
+@media screen and (max-width: 767px) {
+    #portfolio {
+        text-align: center;
+        .title {
+            font-size: 2rem !important;
         }
     }
 }
 
-@media screen and (max-width: 900px) {
-    h1 {
-        font-size: 2.8rem !important;
-    }
-}
-
 @media screen and (max-width: 600px) {
-    h1 {
-        font-size: 2rem !important;
-    }
-    canvas {
-        height: 800px;
-        width: 100%;
+    #portfolio {
+        text-align: center;
+        .title {
+            font-size: 1.5rem !important;
+            margin: 100px 0 20px;
+        }
+        .MuiTabs-root {
+            margin-top: 15px !important;
+        }
     }
 }
 
 @media screen and (max-width: 400px) {
-    h1 {
-        font-size: 1.4rem !important;
+    #portfolio {
+        text-align: center;
+        .title {
+            font-size: 1.2rem !important;
+        }
     }
 }
+
+// .project-container {
+//     padding: 50px 0 !important;
+
+//     .canvas {
+//         height: 65%;
+//         position: relative;
+//         padding-top: 10px;
+
+//         h1 {
+//             font-family: "Libre Franklin", sans-serif;
+//             font-weight: 200;
+//             position: absolute;
+//             top: 50%;
+//             left: 50%;
+//             z-index: 10;
+//             transform: translate(-50%, 50%);
+//             font-size: 4rem;
+//             white-space: nowrap;
+//             mix-blend-mode: difference;
+//         }
+//     }
+// }
+
+// @media screen and (max-width: 900px) {
+//     h1 {
+//         font-size: 2.8rem !important;
+//     }
+// }
+
+// @media screen and (max-width: 600px) {
+//     h1 {
+//         font-size: 2rem !important;
+//     }
+//     canvas {
+//         height: 800px;
+//         width: 100%;
+//     }
+// }
+
+// @media screen and (max-width: 400px) {
+//     h1 {
+//         font-size: 1.4rem !important;
+//     }
+// }

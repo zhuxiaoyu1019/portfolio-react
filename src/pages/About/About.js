@@ -1,39 +1,55 @@
 import React, { useEffect, useRef } from "react";
-import Grid from "@material-ui/core/Grid";
-import Typography from "@material-ui/core/Typography";
-import Title from "../../components/Title/Title";
-import ProfileImg from "../../assets/images/profilepic.jpeg";
-import gsap from "gsap/gsap-core";
+import { Grid, Typography } from "@material-ui/core";
+import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
+import Title from "../../components/Title/Title";
+import useOnScreen from "../../components/InView";
 import "./about.scss";
 
-export default function About() {
-  gsap.registerPlugin(ScrollTrigger);
+const About = (({ setClickState }) => {
+  const [setRef, visible] = useOnScreen({ threshold: 0.2 });
+
   const currentRole = useRef();
   const brandStat = useRef();
   const pfp = useRef();
 
   useEffect(() => {
+    if (visible) {
+      setClickState({ about: true, portfolio: false, contact: false })
+    }
+  }, [visible])
+
+  useEffect(() => {
+    gsap.registerPlugin(ScrollTrigger);
     gsap.from(currentRole.current, {
-      duration: 0.5,
+      scrollTrigger: {
+        trigger: currentRole.current,
+      },
+      duration: 2,
       opacity: 0,
       y: -20,
       stagger: 0.2,
-      delay: 0.7
+      delay: 2.5
     })
     gsap.from(brandStat.current, {
-      duration: 0.5,
+      scrollTrigger: {
+        trigger: brandStat.current,
+      },
+      duration: 1.5,
       opacity: 0,
-      y: -20,
+      y: -40,
       stagger: 0.2,
-      delay: 0.9
+      delay: 2.7
     })
     gsap.from(pfp.current, {
-      duration: 0.5,
+      scrollTrigger: {
+        trigger: pfp.current,
+      },
+      duration: 1.5,
       opacity: 0,
-      y: -20,
+      y: -50,
       stagger: 0.2,
-      delay: 1.1
+      delay: 2.9
     })
     gsap.to(pfp.current, {
       scrollTrigger: {
@@ -45,14 +61,13 @@ export default function About() {
       scale: 1.2,
       height: 50
     })
-    console.log(currentRole.current)
     gsap.to(currentRole.current, {
       scrollTrigger: {
         trigger: currentRole.current,
         scrub: true,
         start: "150% center"
       },
-      color: '#fff',
+      color: '#333333',
       duration: 1.5,
     })
     gsap.to(brandStat.current, {
@@ -67,8 +82,8 @@ export default function About() {
   }, [])
 
   return (
-    <Grid container spacing={2} className="container" id="about">
-      <Grid item md={12} lg container>
+    <Grid container spacing={2} className="container" id="about" ref={setRef}>
+      <Grid item md={12} lg container className="about-wrapper">
         <Grid item xs container direction="column" spacing={2}>
           <Grid item xs>
             <Title title="ABOUT ME" />
@@ -85,9 +100,13 @@ export default function About() {
           </Grid>
         </Grid>
       </Grid>
-      <div className="wrapper">
-        <img className="img" alt="rita" src={ProfileImg} ref={pfp} />
-      </div>
+      <Grid item md={12} lg={4} container className="img-outer-wrapper">
+        <div className="img-inner-wrapper">
+          <img className="img" alt="rita" src="https://res.cloudinary.com/drdwcvbe8/image/upload/v1615578044/portfolio/profilepic_wli7cc.jpg" ref={pfp} />
+        </div>
+      </Grid >
     </Grid >
   );
-}
+})
+
+export default About;

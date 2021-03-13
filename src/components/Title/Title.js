@@ -1,18 +1,23 @@
 import React, { useEffect, useRef } from "react";
 import Typography from "@material-ui/core/Typography";
-import gsap from "gsap/gsap-core";
+import gsap from "gsap";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
 import "./Title.scss";
 
 export default function Title({ title }) {
   const t = useRef();
 
   useEffect(() => {
+    gsap.registerPlugin(ScrollTrigger);
     gsap.from(t.current, {
-      duration: 0.5,
+      scrollTrigger: {
+        trigger: t.current,
+      },
+      duration: 2,
       opacity: 0,
       y: -20,
       stagger: 0.2,
-      delay: 0.5
+      delay: 2.3
     })
     gsap.to(t.current, {
       scrollTrigger: {

@@ -1,73 +1,12 @@
 import React, { useState, useEffect, useRef } from "react";
-import { makeStyles } from "@material-ui/core/styles";
+import gsap from "gsap";
 import { Link } from "react-scroll";
-import Modal from "@material-ui/core/Modal";
-import Backdrop from "@material-ui/core/Backdrop";
-import { useSpring, animated } from "react-spring/web.cjs";
-import PropTypes from "prop-types";
-import { Document, Page, pdfjs } from "react-pdf";
-import Resume from "../../assets/images/resume.pdf";
-import gsap from "gsap/gsap-core";
+import Resume from "../../assets/resume.pdf"
 import "./Nav.scss";
 
-pdfjs.GlobalWorkerOptions.workerSrc = `//cdnjs.cloudflare.com/ajax/libs/pdf.js/${pdfjs.version}/pdf.worker.js`;
-
-const useStyles = makeStyles((theme) => ({
-  arrow: {
-    color: theme.palette.common.black,
-  },
-  tooltip: {
-    backgroundColor: theme.palette.common.black,
-  },
-  modal: {
-    display: "flex",
-    alignItems: "center",
-    justifyContent: "center",
-  },
-}));
-
-const Fade = React.forwardRef(function Fade(props, ref) {
-  const { in: open, children, onEnter, onExited, ...other } = props;
-  const style = useSpring({
-    from: { opacity: 0 },
-    to: { opacity: open ? 1 : 0 },
-    onStart: () => {
-      if (open && onEnter) {
-        onEnter();
-      }
-    },
-    onRest: () => {
-      if (!open && onExited) {
-        onExited();
-      }
-    },
-  });
-
-  return (
-    <animated.div ref={ref} style={style} {...other}>
-      {children}
-    </animated.div>
-  );
-});
-
-Fade.propTypes = {
-  children: PropTypes.element,
-  in: PropTypes.bool.isRequired,
-  onEnter: PropTypes.func,
-  onExited: PropTypes.func,
-};
-
-export default function Nav() {
-  const classes = useStyles();
-  const [open, setOpen] = React.useState(false);
-  const [numPages, setNumPages] = useState(null);
+export default function Nav({ clickState, setClickState }) {
   const [scrollState, setScrollState] = useState();
   const [checkState, setCheckState] = useState(false);
-  const [clickState, setClickState] = useState({
-    about: true,
-    portfolio: false,
-    contact: false,
-  });
   const navBrand = useRef();
 
   useEffect(() => {
@@ -83,18 +22,6 @@ export default function Nav() {
       delay: 0.5
     })
   }, []);
-
-  const handleOpen = () => {
-    setOpen(true);
-  };
-
-  const handleClose = () => {
-    setOpen(false);
-  };
-
-  const onDocumentLoadSuccess = ({ numPages }) => {
-    setNumPages(numPages);
-  };
 
   const handleClick = (type) => {
     setCheckState(!checkState);
@@ -129,9 +56,14 @@ export default function Nav() {
   };
 
   return (
-    <header className={scrollState > 15 ? "scrolled main-header" : "main-header"}>
+    <header className={scrollState > 750 ? "main-header scrolled" : "main-header"}>
       <div className="nav-brand">
-        <Link to="about"><p ref={navBrand} id="nav-brand">RITA Z</p></Link>
+        <Link
+          to="landing"
+          smooth={true}
+          duration={1000}>
+          <p ref={navBrand} id="nav-brand">RITA Z</p>
+        </Link>
       </div>
       <input
         type="checkbox"
@@ -175,27 +107,7 @@ export default function Nav() {
           </Link>
         </li>
         <li className="nav-link">
-          <a onClick={handleOpen}>Resume</a>
-          <Modal
-            aria-labelledby="spring-modal-title"
-            aria-describedby="spring-modal-description"
-            className={classes.modal}
-            open={open}
-            onClose={handleClose}
-            closeAfterTransition
-            BackdropComponent={Backdrop}
-            BackdropProps={{
-              timeout: 500,
-            }}
-          >
-            <Fade in={open}>
-              <div>
-                <Document file={Resume} onLoadSuccess={onDocumentLoadSuccess}>
-                  <Page pageNumber={1} />
-                </Document>
-              </div>
-            </Fade>
-          </Modal>
+          <a href={Resume} target='_blank'>Resume</a>
         </li>
       </ul>
     </header>

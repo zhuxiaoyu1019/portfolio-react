@@ -1,43 +1,94 @@
-.layer {
+.loading-page {
+    animation: fadein 4s;
     width: 100vw;
     height: 100vh;
+    margin-bottom: 30px;
+
+    .layer {
+        height: 100vh;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+
+        #loading-text {
+            path:nth-child(1) {
+                stroke-dasharray: 611;
+                stroke-dashoffset: 611;
+                animation: line-anim 2s ease forwards 0.3s;
+            }
+            path:nth-child(2) {
+                stroke-dasharray: 226;
+                stroke-dashoffset: 226;
+                animation: line-anim 3s ease forwards 0.6s;
+            }
+            path:nth-child(3) {
+                stroke-dasharray: 361;
+                stroke-dashoffset: 361;
+                animation: line-anim 3s ease forwards 0.9s;
+            }
+            path:nth-child(4) {
+                stroke-dasharray: 517;
+                stroke-dashoffset: 517;
+                animation: line-anim 3s ease forwards 1.2s;
+            }
+            path:nth-child(5) {
+                stroke-dasharray: 515;
+                stroke-dashoffset: 515;
+                animation: line-anim 2s ease forwards 1.5s;
+            }
+        }
+
+        a {
+            text-decoration: none;
+            cursor: pointer;
+            margin-top: 4%;
+
+            .enter {
+                text-transform: uppercase;
+                opacity: 0.75;
+                animation: fadein2 4s, glow 1.5s ease-in-out infinite alternate;
+            }
+        }
+    }
 }
 
-#loading-text {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
+@keyframes fadein {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
 }
 
-#loading-text path:nth-child(1) {
-    stroke-dasharray: 611;
-    stroke-dashoffset: 611;
-    animation: line-anim 2s ease forwards 0.3s;
+@keyframes fadein2 {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 0.75;
+    }
 }
 
-#loading-text path:nth-child(2) {
-    stroke-dasharray: 226;
-    stroke-dashoffset: 226;
-    animation: line-anim 3s ease forwards 0.6s;
+@keyframes fadeout {
+    from {
+        opacity: 1;
+    }
+    to {
+        opacity: 0.75;
+    }
 }
 
-#loading-text path:nth-child(3) {
-    stroke-dasharray: 361;
-    stroke-dashoffset: 361;
-    animation: line-anim 3s ease forwards 0.9s;
-}
-
-#loading-text path:nth-child(4) {
-    stroke-dasharray: 517;
-    stroke-dashoffset: 517;
-    animation: line-anim 3s ease forwards 1.2s;
-}
-
-#loading-text path:nth-child(5) {
-    stroke-dasharray: 515;
-    stroke-dashoffset: 515;
-    animation: line-anim 2s ease forwards 1.5s;
+@keyframes glow {
+    from {
+        text-shadow: 0 0 10px #f6f6f6, 0 0 20px #f6f6f6, 0 0 30px #f6f6f6, 0 0 40px #f6f6f6, 0 0 70px #f6f6f6,
+            0 0 80px #f6f6f6, 0 0 100px #f6f6f6, 0 0 150px #f6f6f6;
+    }
+    to {
+        text-shadow: 0 0 5px #f6f6f6, 0 0 10px #f6f6f6, 0 0 15px #f6f6f6, 0 0 20px #f6f6f6, 0 0 35px #f6f6f6,
+            0 0 40px #f6f6f6, 0 0 50px #f6f6f6, 0 0 75px #f6f6f6;
+    }
 }
 
 @keyframes line-anim {
