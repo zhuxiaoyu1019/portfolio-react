@@ -30,7 +30,7 @@ export default function Footer() {
         </Grid>
         <Grid item xs={12} sm={6} className="social-media">
           <a
-            href="https://www.linkedin.com/in/rita-z-2495b01a1/"
+            href="https://www.linkedin.com/in/rita-zhu-2495b01a1/"
             target="_blank"
           >
             <i className="fab fa-linkedin-in fa-lg"></i>
