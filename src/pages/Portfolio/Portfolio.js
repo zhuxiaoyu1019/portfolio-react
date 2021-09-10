@@ -8,7 +8,7 @@ import "./Portfolio.scss";
 
 const Portfolio = ({ clickState, setClickState }) => {
     const [value, setValue] = useState(0);
-    const [setRef, visible] = useOnScreen({ threshold: 0.2 })
+    const [setRef, visible] = useOnScreen({ threshold: 0.15 })
 
     useEffect(() => {
         if (visible) {
